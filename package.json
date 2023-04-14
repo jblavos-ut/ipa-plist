@@ -24,5 +24,6 @@
     "bplist-parser": "^0.3.2",
     "ipa-extract-info": "^1.2.6",
     "node-polyfill-webpack-plugin": "^2.0.1"
-  }
+  },
+  "packageManager": "yarn@3.5.0"
 }
