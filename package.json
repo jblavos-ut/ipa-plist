@@ -13,7 +13,7 @@
     "@babel/core": "^7.21.4",
     "@babel/preset-env": "^7.21.4",
     "babel-loader": "^9.1.2",
-    "fs": "0.0.1-security",
+    "bplist-parser": "^0.3.2",
     "html-webpack-plugin": "^5.5.0",
     "prettier": "^2.8.7",
     "webpack": "^5.79.0",
@@ -21,7 +21,8 @@
     "webpack-dev-server": "^4.13.2"
   },
   "dependencies": {
-    "bplist-parser": "^0.3.2",
+    "browserify": "^17.0.0",
+    "browserify-fs": "^1.0.0",
     "ipa-extract-info": "^1.2.6",
     "node-polyfill-webpack-plugin": "^2.0.1"
   },

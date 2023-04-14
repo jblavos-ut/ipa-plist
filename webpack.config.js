@@ -19,7 +19,7 @@ const config = {
     fallback: {
       // Use can only include required modules. Also install the package.
       // for example: npm install --save-dev assert
-      fs: require.resolve('fs'),
+      fs: require.resolve('browserify-fs'),
     }
   },
   plugins: [
