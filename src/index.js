@@ -1,5 +1,5 @@
 import JSZip from 'jszip';
-import plist from 'plist';
+import { parse } from '@plist/binary.parse';
 
 document.getElementById('ipaFileInput').addEventListener('change', (event) => {
   const ipaFile = event.target.files[0];
@@ -11,17 +11,26 @@ document.getElementById('ipaFileInput').addEventListener('change', (event) => {
   reader.onload = async (e) => {
     try {
       const ipaData = e.target.result;
+      console.log('IPA data:', ipaData);
+
       const loadedZip = await zip.loadAsync(ipaData);
+      console.log('Loaded zip:', loadedZip);
 
       const appFolderName = Object.keys(loadedZip.files).find((file) => file.includes('.app/'));
+      console.log('App folder name:', appFolderName);
+
       const plistPath = `${appFolderName}Info.plist`;
+      console.log('Plist path:', plistPath);
 
       const plistFile = await loadedZip.file(plistPath).async('uint8array');
-      const plistContent = new TextDecoder().decode(plistFile);
-      const plistObject = plist.parse(plistContent);
+      console.log('Plist file:', plistFile.buffer);
 
+      const plistObject = parse(plistFile.buffer);
       console.log('Plist:', plistObject);
-    } catch (error) {
+      var json = JSON.stringify(plistObject, null, 2);
+
+      document.getElementById('ipaFileOutput').innerHTML = json;
+      } catch (error) {
       console.error('Error processing IPA file:', error);
     }
   };
